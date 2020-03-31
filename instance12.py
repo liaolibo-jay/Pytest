@@ -31,7 +31,7 @@ report[1] = report[1]+totcs     #插入科目总分
 for i in report:
     i.append('\n')
 
-sorted(report[2:],key=lambda x:x[-1]) #按平均分排序（除开头两行）
+report[2:]=sorted(report[2:],key=lambda x:x[-2],reverse=True) #按平均分排序（除开头两行）
 for i in range(2,32):
     report[i].insert(0,'%i' %(i))
 
@@ -43,6 +43,7 @@ for i in range(3,33):
         except:
             pass
 print(report[1][2])
+print(report)
 
 
 with open('result.txt','w') as fl:
