@@ -20,8 +20,8 @@ for scores in report[2:]:
     for i in scores[1:]:
         totcs[int(scores.index(i))-1]+=int(i)
         tots +=int(i)
-    scores.append(str(tots))    #插入个人总分
-    scores.append(str(tots/10)) #插入个人平均分
+    scores.append(str(tots))   #插入个人总分
+    scores.append(str(format((tots/9),'.2f'))) #插入个人平均分
 
 for i in totcs:                 #改成平均分
     x = format(int(i)/30,'.2f')
@@ -42,9 +42,9 @@ for i in range(3,33):
                 report[i][j] = '不及格'
         except:
             pass
-print(report[1][2])
-print(report)
 
+for i in report:
+    report[report.index(i)] = ' '.join(i)
 
 with open('result.txt','w') as fl:
     for i in report:
