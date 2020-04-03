@@ -21,7 +21,7 @@ if nindex == len(accountment):  #遍历之后没有发现，则添加一个新�
 
 while True:
     r = int(requests.get('https://python666.cn/cls/number/guess/').text) #得到底数
-    print(r) # 当作没看见
+#    print(r) # 当作没看见
     nRound = 1
     while True:                                 #开始猜数字，至少有一轮，因此开始序数为1
         gNumber = input('请猜一个1-100的数字：')
@@ -39,9 +39,12 @@ while True:
     
     accountment[nindex][1] = str(int(accountment[nindex][1])+1)  #修改为新结果
     accountment[nindex][3] = str(int(accountment[nindex][3])+nRound)
-    if nRound < int(accountment[nindex][2]):                     #比较最快轮数并修改
+    if int(accountment[nindex][1]) ==1:
         accountment[nindex][2] = str(nRound)
-    print('%s你已经玩了%i次，最少%i轮猜出答案，平均%.2f轮猜出答案' %(accountment[i][0],int(accountment[i][1]),int(accountment[i][2]),float(int(accountment[i][3])/int(accountment[i][1]))))
+    else:
+        if nRound < int(accountment[nindex][2]):                     #比较最快轮数并修改
+            accountment[nindex][2] = str(nRound)
+    print('%s你已经玩了%i次，最少%i轮猜出答案，平均%.2f轮猜出答案' %(accountment[nindex][0],int(accountment[nindex][1]),int(accountment[nindex][2]),float(int(accountment[nindex][3])/int(accountment[nindex][1]))))
     goA = input('是否继续游戏？（输入y继续，其他退出）')
     if goA != 'y':
         print('退出游戏，欢迎下次再来！')
